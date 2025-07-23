@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --background: linear-gradient(
+    230.5deg,
+    rgba(8, 15, 32, 1) 0%,
+    rgba(21, 26, 77, 1) 44.3450391292572%,
+    rgba(56, 44, 116, 1) 100%
+  );
+  --foreground: #fff;
+
+  /* FONTS */
+  --font-sfpro: var(--font-sfpro);
+  --font-inter: var(--font-inter);
+
+  /* CUSTOM LINK/BUTTON */
+  --button-bg: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(64, 39, 136, 1) 100%);
+  --button-border-gradient: #9bb6f9;
+  --button-box-shadow: inset 0px 10px 30px 0px rgba(73, 123, 255, 0.7);
+  --button-glow2: linear-gradient(180deg, rgba(47, 40, 74, 0) 0%, rgba(15, 85, 232, 1) 75%);
+
+  --container: rgba(0, 0, 0, 0.5);
+  --container-outline:
+    linear-gradient(180deg, rgba(89, 89, 188, 1) 0%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(to left, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07));
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* FONTS */
+  --font-sfpro: var(--font-sfpro);
+  --font-inter: var(--font-inter);
+
+  /* CUSTOM LINK/BUTTON */
+  --button-bg: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(64, 39, 136, 1) 100%);
+  --button-border-gradient: #9bb6f9;
+  --button-box-shadow: inset 0px 10px 30px 0px rgba(73, 123, 255, 0.7);
+  --button-glow2: linear-gradient(180deg, rgba(47, 40, 74, 0) 0%, rgba(15, 85, 232, 1) 75%);
+
+  --container: rgba(0, 0, 0, 0.5);
+  --container-outline:
+    linear-gradient(180deg, rgba(89, 89, 188, 1) 0%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(to left, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07));
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sfpro);
+  font-weight: 400;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+}
