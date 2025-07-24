@@ -4,7 +4,7 @@ import cn from "classnames";
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "mini";
 }
 
 export function CustomButton({ children, className, variant, ...props }: CustomButtonProps) {
@@ -14,7 +14,7 @@ export function CustomButton({ children, className, variant, ...props }: CustomB
         <button
           className={cn(
             "relative px-[30px] py-[10px] rounded-[10px] flex flex-row gap-3 items-center justify-center overflow-hidden transition",
-            "border border-[var(--button-border-gradient)]",
+            "border border-[var(--button-border-gradient)] cursor-pointer",
             className
           )}
           style={{
@@ -50,9 +50,25 @@ export function CustomButton({ children, className, variant, ...props }: CustomB
       return (
         <button
           className={cn(
-            "relative flex flex-row items-center justify-center gap-[12px] px-[30px] py-[10px] rounded-[10px] border border-solid flex-shrink-0 bg-[var(--container,rgba(0,0,0,0.5))] border-[#49499a]",
+            "relative flex flex-row items-center justify-center gap-[12px] px-[30px] py-[10px] rounded-[10px] border border-solid flex-shrink-0 bg-[var(--container,rgba(0,0,0,0.5))] border-[#49499a] cursor-pointer",
             className
           )}
+        >
+          {children}
+        </button>
+      );
+
+    case "mini":
+      return (
+        <button
+          className={cn(
+            "grid place-content-center w-[44px] h-[44px] bg-[var(--black-opacity-10)] border border-solid border-[var(--border-grey)] rounded-[10px] backdrop-blur-[10px]",
+            className
+          )}
+          style={{
+            boxShadow:
+              "0px 10px 10px 0px rgba(0, 0, 0, 0.1),0px 4px 4px 0px rgba(0, 0, 0, 0.05), 0px 1px 0px 0px rgba(0, 0, 0, 0.05)",
+          }}
         >
           {children}
         </button>

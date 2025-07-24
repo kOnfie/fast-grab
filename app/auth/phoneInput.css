@@ -1,0 +1,143 @@
+.react-tel-input {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.react-tel-input .form-control {
+  background-color: var(--container, rgba(0, 0, 0, 0.5));
+  border: 1px solid #49499a;
+
+  border-radius: 10px;
+
+  font-family: var(--font-sfpro);
+  text-align: center;
+
+  width: auto;
+  height: auto;
+  flex: 1;
+
+  padding: 10px 30px;
+
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.react-tel-input .flag-dropdown {
+  background-color: var(--container, rgba(0, 0, 0, 0.5));
+  border: 1px solid #49499a;
+
+  border-radius: 10px;
+
+  padding: 0 14px;
+
+  position: relative;
+
+  display: grid;
+  place-content: center;
+
+  width: 47px;
+  height: 47px;
+}
+
+.flex-phone {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 8px 30px;
+  border-radius: 10px;
+  border: 1px solid #49499a;
+  background: var(--container, rgba(0, 0, 0, 0.5));
+  font-weight: 500;
+  align-items: center;
+}
+
+.custom-phone-input {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  padding: 5px 0px 5px 0;
+
+  width: 100%;
+
+  order: 2;
+}
+
+.react-phone-input-2 .flag-dropdown {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.selected-flag {
+  background: transparent;
+}
+
+.react-tel-input .flag-dropdown.open {
+  background: transparent;
+
+  border-radius: 10px;
+  background-color: var(--container, rgba(0, 0, 0, 0.5));
+}
+
+.react-phone-input-2 .selected-flag {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.react-phone-input-2 .country-list {
+  color: #222;
+}
+
+.react-phone-input-2 .form-control {
+  border: none;
+  background: transparent;
+}
+
+.react-tel-input .selected-flag {
+  padding: 0;
+
+  width: auto;
+}
+
+.react-tel-input .selected-flag:hover,
+.react-tel-input .selected-flag:focus {
+  background: transparent;
+}
+
+.react-tel-input .selected-flag .arrow {
+  border: none;
+}
+
+/* ================================ */
+
+.react-tel-input .selected-flag {
+  display: inline-flex;
+  /* height: auto; */
+}
+
+.react-tel-input .selected-flag .flag {
+  position: relative;
+  top: 0;
+  margin-top: 0;
+}
+
+.react-tel-input .selected-flag .arrow {
+  display: none;
+}
+
+.react-tel-input .country-list {
+  background: #000;
+  border-radius: 10px;
+  border: 1px solid #49499a;
+}
+
+.react-tel-input .country-list .country.highlight {
+  background-color: var(--container, rgba(0, 0, 0, 0.5));
+}

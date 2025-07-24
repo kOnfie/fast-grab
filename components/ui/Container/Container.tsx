@@ -4,7 +4,7 @@ import cn from "classnames";
 
 interface ContainerProps {
   children: ReactNode;
-  className: string;
+  className?: string;
 }
 
 export function Container({ children, className }: ContainerProps) {
