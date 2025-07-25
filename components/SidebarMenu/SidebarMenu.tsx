@@ -95,7 +95,7 @@ export default function SidebarMenu() {
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-5 right-5">
+        <div className="absolute bottom-20 left-5 right-5">
           <Separator className="my-5 w-full" />
 
           <div className="">
