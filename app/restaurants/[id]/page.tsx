@@ -7,7 +7,7 @@ export default async function RestaurantById({ params }: { params: Promise<{ id:
     const { id } = await params;
 
     // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://fast-grab-git-main-konfies-projects.vercel.app";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://fast-grab.vercel.app/";
     const res = await fetch(`${baseUrl}/api/restaurants/${id}`);
 
     const restaurant = await res.json();
