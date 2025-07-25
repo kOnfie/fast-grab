@@ -1,7 +1,6 @@
 "use client";
 
 import { House, NotebookTabs, ShoppingCart, User } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
 export const ITEMS = [

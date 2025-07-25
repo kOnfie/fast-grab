@@ -1,13 +1,14 @@
 import Image from "next/image";
 
-import { Header } from "@/pages/Home/Header/Header";
-import { SearchOrder } from "@/pages/Home/SearchOrder/SearchOrder";
-import { Categories } from "@/pages/Home/Categories/Categories";
-import { Discounts } from "@/pages/Home/Discounts/Discounts";
-import { Footer } from "@/pages/Home/Footer/Footer";
-import { Restaurants } from "@/pages/Home/Restaurants/Restaurants";
+import { Header } from "@/components/Header/Header";
+import { SearchOrder } from "@/components/SearchOrder/SearchOrder";
+import { Categories } from "@/components/Categories/Categories";
+import { Discounts } from "@/components/Discounts/Discounts";
+import { Footer } from "@/components/Footer/Footer";
+import { Restaurants } from "@/components/Restaurants/Restaurants";
 
 import backgroundImage from "../../public/main/bacgkround.jpg";
+import SidebarMenu from "@/components/SidebarMenu/SidebarMenu";
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
 
       <div className="relative z-50 h-[100vh] flex flex-col">
         <Header variant="primary" />
+
+        <SidebarMenu />
 
         <main className="bg-[#0000008f] backdrop-blur-xl relative flex-1 pb-[115px]">
           <SearchOrder />

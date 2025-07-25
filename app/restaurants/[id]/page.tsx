@@ -1,8 +1,8 @@
-import { Header } from "@/pages/Home/Header/Header";
-import { RestaurantInfo } from "@/pages/Restaurant/RestaurantInfo/RestaurantInfo";
-import { RestaurantItems } from "@/pages/Restaurant/RestaurantItems/RestaurantItems";
+import { Header } from "@/components/Header/Header";
+import { RestaurantInfo } from "@/components/RestaurantInfo/RestaurantInfo";
+import { RestaurantItems } from "@/components/RestaurantItems/RestaurantItems";
 
-export default async function RestaurantById({ params }: { params: { id: string } }) {
+export default async function RestaurantById({ params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
 

@@ -53,6 +53,7 @@ export function CustomButton({ children, className, variant, ...props }: CustomB
             "relative flex flex-row items-center justify-center gap-[12px] px-[30px] py-[10px] rounded-[10px] border border-solid flex-shrink-0 bg-[var(--container,rgba(0,0,0,0.5))] border-[#49499a] cursor-pointer",
             className
           )}
+          {...props}
         >
           {children}
         </button>
@@ -69,6 +70,7 @@ export function CustomButton({ children, className, variant, ...props }: CustomB
             boxShadow:
               "0px 10px 10px 0px rgba(0, 0, 0, 0.1),0px 4px 4px 0px rgba(0, 0, 0, 0.05), 0px 1px 0px 0px rgba(0, 0, 0, 0.05)",
           }}
+          {...props}
         >
           {children}
         </button>

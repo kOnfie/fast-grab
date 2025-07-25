@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container/Container";
-import { Burger } from "./components/Burger/Burger";
+import Burger from "./components/Burger/Burger";
 import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 import { ChevronLeft, Ellipsis } from "lucide-react";
 import { CustomLink } from "@/components/ui/CustomLink/CustomLink";
