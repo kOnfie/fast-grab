@@ -30,14 +30,13 @@ export function Footer() {
   const toggleCart = useCart((state) => state.toggleCart);
 
   function handleChangeActiveParam(param: string) {
-    setActiveParam(param);
-
     if (param === "Cart") {
       toggleCart();
+      return;
     }
-  }
 
-  console.log("cartIsOpen:", cartIsOpen);
+    setActiveParam(param);
+  }
 
   return (
     <footer

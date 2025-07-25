@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container/Container";
 import { Title } from "@/components/ui/Title/Title";
 import { RestaurantType } from "@/types/Restaurant.types";
+import { RestaurantsSkeleton } from "./RestaurantsSkeleton";
 
 export async function Restaurants() {
   try {
@@ -61,10 +62,6 @@ export async function Restaurants() {
     );
   } catch (error) {
     console.error("Error fetching restaurants:", error);
-    return (
-      <Container>
-        <div>Error loading restaurants. Please try again later.</div>
-      </Container>
-    );
+    return <RestaurantsSkeleton />;
   }
 }

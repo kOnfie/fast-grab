@@ -4,12 +4,18 @@ import cn from "classnames";
 
 import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 import { useSidebarMenu } from "@/zustand/sidebarMenu.store";
-import { Heart, Search, User, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { CircleQuestionMark, Cog, Heart, House, NotebookTabs, Search, User, X } from "lucide-react";
 import { Separator } from "../ui/Separator/Separator";
 import { useHandleCloseScroll } from "@/hooks/useHandleCloseScroll";
 
+import "./SidebarMenu.css";
+import Link from "next/link";
+
 const MENU_ITEMS = [
+  {
+    name: "Home",
+    icon: <House width={20} height={24} />,
+  },
   {
     name: "Profile",
     icon: <User size={20} color="#fff" />,
@@ -22,12 +28,24 @@ const MENU_ITEMS = [
     name: "Favourite",
     icon: <Heart size={20} color="#fff" />,
   },
+  {
+    name: "Orders",
+    icon: <NotebookTabs size={20} color="#fff" />,
+  },
+];
+
+const SUPPORT_ITEMS = [
+  {
+    name: "Settings and Privacy",
+    icon: <Cog width={18} height={20} color="#fff" />,
+  },
+  {
+    name: "Help center",
+    icon: <CircleQuestionMark width={17} height={20} color="#fff" />,
+  },
 ];
 
 export default function SidebarMenu() {
-  const [activeItem, setActiveItem] = useState<string>("Profile");
-  console.log("activeItem:", activeItem);
-
   const toggleSidebar = useSidebarMenu((state) => state.toggleSidebar);
   const sidebarIsOpen = useSidebarMenu((state) => state.sidebarIsOpen);
 
@@ -58,31 +76,44 @@ export default function SidebarMenu() {
           <p className="font-medium text-[18px]">+380 (50) 963-4476</p>
         </div>
 
-        <Separator className="my-5" />
+        <Separator className="my-5 w-full" />
 
-        <div className="">
-          <p className="opacity-70">MENU</p>
+        <div className="uppercase ml-[44px]">
+          <p className="opacity-70 text-[13px]">MENU</p>
 
           <div>
             {MENU_ITEMS.map((item) => (
               <button
-                onClick={() => setActiveItem(item.name)}
-                className={cn(
-                  "relative flex items-center gap-4 py-[10px] px-5 ",
-                  activeItem === item.name && "border-l-[#2670e9]"
-                )}
+                className={cn("relative flex items-center gap-4 py-[10px] px-5 w-full sidebar-btn")}
                 key={item.name}
-                style={{ background: activeItem === item.name ? "var(--bg-blue-gradient)" : "" }}
               >
-                {activeItem === item.name && (
-                  <div className="absolute left-0 top-0 bottom-0 w-[3px] h-[44px] bg-[#3079ef] blur-[5px]" />
-                )}
-
                 {item.icon}
 
                 <p className="font-medium">{item.name}</p>
               </button>
             ))}
+          </div>
+        </div>
+
+        <div className="absolute bottom-5 left-5 right-5">
+          <Separator className="my-5 w-full" />
+
+          <div className="">
+            <p className="opacity-70 uppercase text-[13px]">Settings and Support</p>
+
+            <div>
+              {SUPPORT_ITEMS.map((item) => (
+                <Link
+                  href={"/"}
+                  className={cn("relative flex items-center gap-[13px] py-[10px] px-5 w-full sidebar-btn")}
+                  key={item.name}
+                >
+                  {item.icon}
+
+                  <p className="font-medium text-[14px]">{item.name}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

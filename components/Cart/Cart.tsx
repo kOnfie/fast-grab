@@ -20,8 +20,6 @@ export function Cart() {
 
   useHandleCloseScroll(cartIsOpen);
 
-  console.log("items:", items);
-
   const subTotal = items.reduce((prevValue, item) => prevValue + item.price * item.quantity, 0);
 
   return (

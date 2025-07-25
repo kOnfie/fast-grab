@@ -7,6 +7,9 @@ import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 import { Title } from "@/components/ui/Title/Title";
 import { Plus } from "lucide-react";
 import { useCart } from "@/zustand/cart.store";
+import { Popup } from "../ui/Popup/Popup";
+import { useState } from "react";
+import { CartItem } from "@/types/CartItem.types";
 
 const ITEMS = [
   {
@@ -56,7 +59,14 @@ export function RestaurantItems() {
     return text.slice(0, 40) + "...";
   }
 
+  const [popupIsActive, setPopupIsActive] = useState(false);
+
   const addItemToList = useCart((state) => state.addItemToList);
+
+  function handleAddingItemToCart(item: CartItem) {
+    setPopupIsActive(true);
+    addItemToList(item);
+  }
 
   return (
     <div className="pt-[90px]">
@@ -90,13 +100,21 @@ export function RestaurantItems() {
                 className="absolute bottom-4 right-4 border border-solid border-[var(--violet-border-opacity)]"
                 variant="mini"
                 onClick={() =>
-                  addItemToList({ name: item.name, price: item.price, id: item.id, quantity: 1, image: item.image })
+                  handleAddingItemToCart({
+                    name: item.name,
+                    price: item.price,
+                    id: item.id,
+                    quantity: 1,
+                    image: item.image,
+                  })
                 }
               >
                 <Plus size={20} color="#fff" />
               </CustomButton>
             </div>
           ))}
+
+          <Popup isVisible={popupIsActive} setIsVisible={setPopupIsActive} />
         </div>
       </Container>
     </div>

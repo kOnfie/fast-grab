@@ -10,9 +10,9 @@ interface RestaurantInfoProps {
 
 export function RestaurantInfo({ name, address, price, time, rating, reviews, icon }: RestaurantInfoProps) {
   return (
-    <div className="absolute top-[244px] right-5 left-5 backdrop-blur-[5px]">
+    <div className="absolute top-[244px] right-5 left-5 backdrop-blur-[5px] rounded-[20px] border border-solid border-[var(--border-grey)] overflow-hidden">
       <div
-        className="border border-solid border-[var(--border-grey)] rounded-[20px] px-4 py-6"
+        className="px-4 py-6"
         style={{
           background:
             "linear-gradient(180deg,rgba(23, 26, 73, 0) 0%,rgba(43, 42, 109, 1) 55.5569589138031%,rgba(0, 0, 0, 0) 55.806803703308105%,rgba(0, 0, 0, 0.5) 100%)",

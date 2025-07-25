@@ -1,12 +1,5 @@
+import { CartItem } from "@/types/CartItem.types";
 import { create } from "zustand";
-
-type CartItem = {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-};
 
 type Store = {
   cartIsOpen: boolean;

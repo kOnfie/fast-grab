@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header/Header";
 import { RestaurantInfo } from "@/components/RestaurantInfo/RestaurantInfo";
 import { RestaurantItems } from "@/components/RestaurantItems/RestaurantItems";
+import { RestaurantPageSkeleton } from "@/components/RestaurantPageSkeleton/RestaurantPageSkeleton";
 
 export default async function RestaurantById({ params }: { params: Promise<{ id: string }> }) {
   try {
@@ -44,6 +45,6 @@ export default async function RestaurantById({ params }: { params: Promise<{ id:
     );
   } catch (error) {
     console.error("Error fetching restaurant data:", error);
-    return <div>Error loading restaurant data. Please try again later.</div>;
+    return <RestaurantPageSkeleton />;
   }
 }
