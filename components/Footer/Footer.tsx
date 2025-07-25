@@ -1,5 +1,6 @@
 "use client";
 
+import { useCart } from "@/zustand/cart.store";
 import { House, NotebookTabs, ShoppingCart, User } from "lucide-react";
 import { useState } from "react";
 
@@ -25,11 +26,18 @@ export const ITEMS = [
 export function Footer() {
   const [activeParam, setActiveParam] = useState("Home");
 
+  const cartIsOpen = useCart((state) => state.cartIsOpen);
+  const toggleCart = useCart((state) => state.toggleCart);
+
   function handleChangeActiveParam(param: string) {
     setActiveParam(param);
+
+    if (param === "Cart") {
+      toggleCart();
+    }
   }
 
-  console.log("activeParam:", activeParam);
+  console.log("cartIsOpen:", cartIsOpen);
 
   return (
     <footer

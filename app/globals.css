@@ -16,9 +16,14 @@
   /* COLORS */
   --black-opacity-1: rgba(0, 0, 0, 0.01);
   --black-opacity-10: rgba(0, 0, 0, 0.1);
-  --black-opacity-50: rgba(0, 0, 0, 0.5);
+  --black-opacity-20: rgba(0, 0, 0, 0.2);
+  --black-opacity-60: rgba(0, 0, 0, 0.5);
   --light-grey: #d6e6f2;
+
+  --white-opacity-10: rgba(255, 255, 255, 0.1);
+  --white-opacity-20: rgba(255, 255, 255, 0.2);
   --white-opacity-70: rgba(255, 255, 255, 0.7);
+
   --border-grey: #ffffff3a;
   --blue: #81a3ff;
 
@@ -53,13 +58,17 @@
   /* COLORS */
   --black-opacity-1: rgba(0, 0, 0, 0.01);
   --black-opacity-10: rgba(0, 0, 0, 0.1);
+  --black-opacity-20: rgba(0, 0, 0, 0.2);
   --black-opacity-50: rgba(0, 0, 0, 0.5);
-  --light-grey: #d6e6f2;
+  --black-opacity-60: rgba(0, 0, 0, 0.5);
+
+  --white-opacity-10: rgba(255, 255, 255, 0.1);
+  --white-opacity-20: rgba(255, 255, 255, 0.2);
   --white-opacity-70: rgba(255, 255, 255, 0.7);
+
+  --light-grey: #d6e6f2;
   --border-grey: #ffffff3a;
-
   --blue: #81a3ff;
-
   --violet-border-opacity: rgba(101, 98, 251, 0.7);
 
   /* BACKGROUNDS */

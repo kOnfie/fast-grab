@@ -9,6 +9,7 @@ import { Restaurants } from "@/components/Restaurants/Restaurants";
 
 import backgroundImage from "../../public/main/bacgkround.jpg";
 import SidebarMenu from "@/components/SidebarMenu/SidebarMenu";
+import { Cart } from "@/components/Cart/Cart";
 
 export default function Home() {
   return (
@@ -29,6 +30,8 @@ export default function Home() {
 
           <Restaurants />
         </main>
+
+        <Cart />
 
         <Footer />
       </div>

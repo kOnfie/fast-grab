@@ -6,6 +6,8 @@ import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 import { useSidebarMenu } from "@/zustand/sidebarMenu.store";
 import { Heart, Search, User, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Separator } from "../ui/Separator/Separator";
+import { useHandleCloseScroll } from "@/hooks/useHandleCloseScroll";
 
 const MENU_ITEMS = [
   {
@@ -29,17 +31,7 @@ export default function SidebarMenu() {
   const toggleSidebar = useSidebarMenu((state) => state.toggleSidebar);
   const sidebarIsOpen = useSidebarMenu((state) => state.sidebarIsOpen);
 
-  useEffect(() => {
-    if (sidebarIsOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [sidebarIsOpen]);
+  useHandleCloseScroll(sidebarIsOpen);
 
   function handleCloseToggle() {
     toggleSidebar();
@@ -48,7 +40,7 @@ export default function SidebarMenu() {
   return (
     <div
       className={cn(
-        "absolute left-[-100%] top-0 bottom-0 z-100 w-full h-[100vh] transition-all",
+        "absolute left-[-100%] top-0 bottom-0 z-1000 w-full h-[100vh] transition-all",
         sidebarIsOpen && "left-[0]"
       )}
     >
@@ -57,7 +49,7 @@ export default function SidebarMenu() {
           <X size={30} color="#fff" />
         </CustomButton>
 
-        <div className="mt-[46px] text-center mb-5">
+        <div className="mt-[46px] text-center">
           <div className="w-15 h-15 rounded-[50%] bg-[#171C3B] border-1 border-solid border-[#ffffff4b] grid place-content-center m-auto mb-[13px]">
             <User size={28} color="#fff" />
           </div>
@@ -66,7 +58,9 @@ export default function SidebarMenu() {
           <p className="font-medium text-[18px]">+380 (50) 963-4476</p>
         </div>
 
-        <div className="mt-5">
+        <Separator className="my-5" />
+
+        <div className="">
           <p className="opacity-70">MENU</p>
 
           <div>
@@ -95,7 +89,7 @@ export default function SidebarMenu() {
 
       <div
         className={cn(
-          "bg-[var(--black-opacity-1)] backdrop-blur-[20px] absolute top-0 bottom-0 right-0 h-full w-[120px] scale-0",
+          "bg-[var(--black-opacity-1)] backdrop-blur-[20px] absolute top-0 bottom-0 right-0 h-full w-full scale-0",
           sidebarIsOpen && "scale-100"
         )}
         onClick={toggleSidebar}

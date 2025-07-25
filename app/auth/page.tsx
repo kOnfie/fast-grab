@@ -53,7 +53,7 @@ export default function Auth() {
         <ChevronRight size={16} />
       </CustomButton>
 
-      <Separator className="mt-[30px] mb-[30px]" />
+      <Separator variant="secondary" className="mt-[30px] mb-[30px]" />
 
       <CustomButton className="w-full font-medium" variant="secondary">
         <Image src={googleIcon.src} width={23} height={23} alt="Google" />

@@ -20,9 +20,10 @@ export default async function RestaurantById({ params }: { params: Promise<{ id:
           <div
             className="w-full h-[340px]"
             style={{
+              backgroundAttachment: "fixed",
               backgroundImage: `url(${restaurant.image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
+              backgroundSize: "123%",
+              backgroundPosition: "top center",
               backgroundRepeat: "no-repeat",
             }}
           />

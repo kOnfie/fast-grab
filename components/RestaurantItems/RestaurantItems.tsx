@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 
 import { Container } from "@/components/ui/Container/Container";
 import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 import { Title } from "@/components/ui/Title/Title";
 import { Plus } from "lucide-react";
+import { useCart } from "@/zustand/cart.store";
 
 const ITEMS = [
   {
@@ -16,7 +19,7 @@ const ITEMS = [
   },
   {
     id: 2,
-    name: "Udon Miso",
+    name: "New Item",
     description:
       "Thick handmade udon noodles in a rich miso broth, garnished with tofu, spring onions, and vegetables.",
     price: 16.0,
@@ -53,6 +56,8 @@ export function RestaurantItems() {
     return text.slice(0, 40) + "...";
   }
 
+  const addItemToList = useCart((state) => state.addItemToList);
+
   return (
     <div className="pt-[90px]">
       <Container>
@@ -84,6 +89,9 @@ export function RestaurantItems() {
               <CustomButton
                 className="absolute bottom-4 right-4 border border-solid border-[var(--violet-border-opacity)]"
                 variant="mini"
+                onClick={() =>
+                  addItemToList({ name: item.name, price: item.price, id: item.id, quantity: 1, image: item.image })
+                }
               >
                 <Plus size={20} color="#fff" />
               </CustomButton>
