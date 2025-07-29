@@ -26,7 +26,6 @@ export const ITEMS = [
 export function Footer() {
   const [activeParam, setActiveParam] = useState("Home");
 
-  const cartIsOpen = useCart((state) => state.cartIsOpen);
   const toggleCart = useCart((state) => state.toggleCart);
 
   function handleChangeActiveParam(param: string) {

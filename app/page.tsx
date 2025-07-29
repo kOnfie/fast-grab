@@ -1,12 +1,25 @@
 "use client";
-
-import { motion } from "framer-motion";
-
-import { CustomLink } from "@/components/ui/CustomLink/CustomLink";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 import { ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+
+import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 
 export default function Welcome() {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleRedirectToNextPage = () => {
+    if (!session) {
+      router.push("/auth");
+      return;
+    }
+
+    router.push("/home");
+  };
+
   return (
     <>
       <motion.div
@@ -29,12 +42,12 @@ export default function Welcome() {
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5 }}>
-          <CustomLink variant="primary" href="/home" className="w-full">
+          <CustomButton onClick={handleRedirectToNextPage} variant="primary" className="w-full">
             <div className="flex items-center gap-[12px]">
               Continue
               <ChevronRight size={16} />
             </div>
-          </CustomLink>
+          </CustomButton>
         </motion.div>
       </div>
     </>

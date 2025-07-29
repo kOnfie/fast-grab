@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
+import { NextAuthProvider } from "@/components/NextAuthProvider/NextAuthProvider";
 
 const sfPro = localFont({
   src: [
@@ -45,7 +46,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sfPro.variable} ${inter.variable} antialiased`}>{children}</body>
+      <body className={`${sfPro.variable} ${inter.variable} antialiased`}>
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </body>
     </html>
   );
 }

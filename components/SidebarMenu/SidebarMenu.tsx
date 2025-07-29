@@ -1,15 +1,21 @@
 "use client";
 
 import cn from "classnames";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
 import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 import { useSidebarMenu } from "@/zustand/sidebarMenu.store";
-import { CircleQuestionMark, Cog, Heart, House, NotebookTabs, Search, User, X } from "lucide-react";
+import { CircleQuestionMark, Cog, Heart, House, LogOut, NotebookTabs, Search, User, X } from "lucide-react";
 import { Separator } from "../ui/Separator/Separator";
 import { useHandleCloseScroll } from "@/hooks/useHandleCloseScroll";
 
 import "./SidebarMenu.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+import { UserProfileSkeleton } from "./components/UserProfileSkeleton/UserProfileSkeleton";
 
 const MENU_ITEMS = [
   {
@@ -32,6 +38,13 @@ const MENU_ITEMS = [
     name: "Orders",
     icon: <NotebookTabs size={20} color="#fff" />,
   },
+  {
+    name: "Exit",
+    icon: <LogOut size={20} color="#fff" />,
+    handle: () => {
+      signOut();
+    },
+  },
 ];
 
 const SUPPORT_ITEMS = [
@@ -49,11 +62,23 @@ export default function SidebarMenu() {
   const toggleSidebar = useSidebarMenu((state) => state.toggleSidebar);
   const sidebarIsOpen = useSidebarMenu((state) => state.sidebarIsOpen);
 
+  const router = useRouter();
+
+  const { data: session, status } = useSession();
+  console.log("session:", session);
+  console.log("status:", status);
+
   useHandleCloseScroll(sidebarIsOpen);
 
   function handleCloseToggle() {
     toggleSidebar();
   }
+
+  useEffect(() => {
+    if (!session && status !== "loading") {
+      router.push("/auth");
+    }
+  }, [session, router, status]);
 
   return (
     <div
@@ -67,14 +92,22 @@ export default function SidebarMenu() {
           <X size={30} color="#fff" />
         </CustomButton>
 
-        <div className="mt-[46px] text-center">
-          <div className="w-15 h-15 rounded-[50%] bg-[#171C3B] border-1 border-solid border-[#ffffff4b] grid place-content-center m-auto mb-[13px]">
-            <User size={28} color="#fff" />
-          </div>
+        {status === "loading" ? (
+          <UserProfileSkeleton />
+        ) : (
+          <div className="mt-[46px] text-center">
+            <div className="w-15 h-15 rounded-[50%] bg-[#171C3B] border-1 border-solid border-[#ffffff4b] grid place-content-center m-auto mb-[13px] overflow-hidden">
+              {session && session?.user ? (
+                <Image src={session?.user?.image || ""} alt={session?.user?.name || ""} width={60} height={60} />
+              ) : (
+                <User size={28} color="#fff" />
+              )}
+            </div>
 
-          <p className="font-medium text-[18px]">Firstname Surname</p>
-          <p className="font-medium text-[18px]">+380 (50) 963-4476</p>
-        </div>
+            <p className="font-medium text-[18px]">{session?.user?.name}</p>
+            <p className="font-medium text-[12px] opacity-60">{session?.user?.email}</p>
+          </div>
+        )}
 
         <Separator className="my-5 w-full" />
 
@@ -84,6 +117,7 @@ export default function SidebarMenu() {
           <div>
             {MENU_ITEMS.map((item) => (
               <button
+                onClick={item.handle}
                 className={cn("relative flex items-center gap-4 py-[10px] px-5 w-full sidebar-btn")}
                 key={item.name}
               >

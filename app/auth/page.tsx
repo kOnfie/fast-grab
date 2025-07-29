@@ -1,19 +1,18 @@
 "use client";
 
+import { useState } from "react";
+
 import { Container } from "@/components/ui/Container/Container";
 import { CustomButton } from "@/components/ui/CustomButton/CustomButton";
 import { Separator } from "@/components/ui/Separator/Separator";
 import { ChevronRight } from "lucide-react";
-import { useState } from "react";
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 import "./phoneInput.css";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-
-import googleIcon from "../../public/auth/google.svg";
+import { GoogleAuth } from "@/components/GoogleAuth/GoogleAuth";
 
 export default function Auth() {
   const [phone, setPhone] = useState("");
@@ -55,10 +54,7 @@ export default function Auth() {
 
       <Separator variant="secondary" className="mt-[30px] mb-[30px]" />
 
-      <CustomButton className="w-full font-medium" variant="secondary">
-        <Image src={googleIcon.src} width={23} height={23} alt="Google" />
-        Continue with Goggle
-      </CustomButton>
+      <GoogleAuth />
     </Container>
   );
 }
